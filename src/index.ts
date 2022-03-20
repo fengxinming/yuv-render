@@ -128,7 +128,7 @@ class YUVRender {
     try {
       this.webglContext?.getExtension('WEBGL_lose_context')?.loseContext();
     }
-    catch (e) {}
+    catch (e) { }
 
     const { el } = this;
     el.parentNode?.removeChild(el);

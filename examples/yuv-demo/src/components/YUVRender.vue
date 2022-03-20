@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { ref, defineComponent, onMounted } from 'vue';
-import YUVRender from '@alife/yuv-render';
+import YUVRender from 'yuv-view';
 
 export default defineComponent({
   name: 'YUVRender',
