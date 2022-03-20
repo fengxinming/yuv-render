@@ -1,10 +1,10 @@
 {
-  "name": "yuv-demo",
+  "name": "yuv",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -13,8 +13,6 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
     "stylus": "^0.56.0",
-    "typescript": "^4.5.4",
-    "vite": "^2.8.0",
-    "vue-tsc": "^0.29.8"
+    "vite": "^2.8.0"
   }
 }

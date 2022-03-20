@@ -5,14 +5,14 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { ref, defineComponent, onMounted } from 'vue';
 import YUVRender from 'yuv-view';
 
 export default defineComponent({
   name: 'YUVRender',
   setup(props, { expose }) {
-    let yuvRender: YUVRender | null = null;
+    let yuvRender = null;
     const waiting = ref(false);
     const canvasRef = ref(null);
 

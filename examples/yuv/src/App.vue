@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue';
 import YUVRender from './components/YUVRender.vue';
 
@@ -18,7 +18,7 @@ export default defineComponent({
   },
   methods: {
     start() {
-      (this as any).$refs.yuv.start();
+      this.$refs.yuv.start();
     },
   },
 });
