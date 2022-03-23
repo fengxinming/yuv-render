@@ -1,10 +1,10 @@
 import './index.styl';
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import YUVRender from 'yuv-view';
+import YUV from 'yuv-view';
 
 function YuvRender(props: any, ref: React.Ref<any>) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const yuvRef = useRef<YUVRender>(null);
+  const yuvRef = useRef<YUV>(null);
   const [waiting, setWaiting] = useState(false);
 
   useEffect(() => {
@@ -13,11 +13,9 @@ function YuvRender(props: any, ref: React.Ref<any>) {
       return;
     }
 
-    const yuvRender = new YUVRender(canvas);
-    yuvRender.setDimension(768, 320);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    yuvRef.current = yuvRender;
+    const yuv = new YUV(canvas);
+    yuv.setDimension(768, 320);
+    yuvRef.current = yuv;
   }, []);
 
   useImperativeHandle(ref, () => {

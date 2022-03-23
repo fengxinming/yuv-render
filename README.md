@@ -20,9 +20,11 @@ npm install yuv-view --save
 ## Usage
 
 ```js
-const yuvRender = new YUVRender(document.getElementById('canvas'));
-yuvRender.setDimension(width, height);
-yuvRender.render(buf);
+import YUV from 'yuv-view';
+
+const yuv = new YUV(document.getElementById('canvas'));
+yuv.setDimension(width, height);
+yuv.render(buf);
 ```
 
 ## API
