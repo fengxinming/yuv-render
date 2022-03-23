@@ -50,7 +50,7 @@ class YUVRender {
   render(data: Uint8Array): void {
     const gl = this.webglContext;
     if (!gl) {
-      console.warn('未创建 webgl');
+      console.warn('The WebGLRenderingContext instance was not created');
       return;
     }
 

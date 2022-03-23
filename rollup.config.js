@@ -33,8 +33,7 @@ function ts2es(src, dest) {
       copy({
         targets: [
           { src: 'package.json', dest: 'dist' },
-          { src: 'tsconfig.json', dest: 'dist' },
-          { src: 'NPM_README.md', dest: 'dist', rename: 'README.md' }
+          { src: 'README.md', dest: 'dist' }
         ]
       }),
       filesize()
