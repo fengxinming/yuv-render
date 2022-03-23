@@ -1,49 +1,3 @@
-<template>
-  <div class="yuv-view" :class="{ 'v-waiting': waiting }">
-    <canvas ref="canvasRef" />
-    <div class="v-loading-spinner" />
-  </div>
-</template>
-
-<script>
-import { ref, defineComponent, onMounted } from 'vue';
-import YUVRender from 'yuv-view';
-
-export default defineComponent({
-  name: 'YUVRender',
-  setup(props, { expose }) {
-    let yuvRender = null;
-    const waiting = ref(false);
-    const canvasRef = ref(null);
-
-    onMounted(() => {
-      const canvas = canvasRef.value;
-      if (!canvas) {
-        return;
-      }
-
-      yuvRender = new YUVRender(canvas);
-      yuvRender.setDimension(768, 320);
-    });
-
-    expose({
-      start() {
-        waiting.value = true;
-        fetch('/frame.json')
-          .then((res) => res.json())
-          .then((frameArray) => {
-            waiting.value = false;
-            yuvRender?.render(new Uint8Array(frameArray));
-          });
-      },
-    });
-
-    return { waiting, canvasRef };
-  },
-});
-</script>
-
-<style lang="stylus" scoped>
 .yuv-view
   display block
   box-sizing border-box
@@ -162,4 +116,3 @@ $secondary-background-transparency = 0.5
 
   100%
     border-top-color $secondary-background-color
-</style>

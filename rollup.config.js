@@ -34,7 +34,7 @@ function ts2es(src, dest) {
         targets: [
           { src: 'package.json', dest: 'dist' },
           { src: 'tsconfig.json', dest: 'dist' },
-          { src: 'TNPM_README.md', dest: 'dist', rename: 'README.md' }
+          { src: 'NPM_README.md', dest: 'dist', rename: 'README.md' }
         ]
       }),
       filesize()

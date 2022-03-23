@@ -6,7 +6,8 @@
   "module": "esm.js",
   "types": "src/index.d.ts",
   "scripts": {
-    "build": "rollup -c rollup.config.js"
+    "build": "rollup -c rollup.config.js",
+    "build:demo": "npm run build && cd examples/yuv && npm run build"
   },
   "keywords": [
     "yuv",
