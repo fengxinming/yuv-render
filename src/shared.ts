@@ -29,31 +29,37 @@ void main(void) {
 }
 `;
 
+function loadShader(gl: WebGLRenderingContext, type: number, source: string) {
+  // 根据类型创建着色器
+  const shader = gl.createShader(type);
+  if (shader == null) {
+    console.warn('Unable to create shader');
+    return null;
+  }
+
+  // 设置着色器和脚本
+  gl.shaderSource(shader, source);
+
+  // 编译着色器
+  gl.compileShader(shader);
+
+  // 检查编译结果
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.warn(`Failed to compile ${type === gl.VERTEX_SHADER ? 'vertex': 'fragment'} shader: ${gl.getShaderInfoLog(shader)}`);
+  }
+
+  return shader;
+}
+
 export function createShaderProgram(gl: WebGLRenderingContext): WebGLProgram | null {
-  const vertexShader: WebGLShader | null = gl.createShader(gl.VERTEX_SHADER);
+  const vertexShader: WebGLShader | null = loadShader(gl, gl.VERTEX_SHADER, vertexShaderScript);
   if (!vertexShader) {
     return null;
   }
 
-  gl.shaderSource(vertexShader, vertexShaderScript);
-  gl.compileShader(vertexShader);
-  if (!gl.getShaderParameter(vertexShader, gl.COMPILE_STATUS)) {
-    console.warn(
-      `Vertex shader failed to compile: ${gl.getShaderInfoLog(vertexShader)}`
-    );
-  }
-
-  const fragmentShader: WebGLShader | null = gl.createShader(gl.FRAGMENT_SHADER);
+  const fragmentShader: WebGLShader | null = loadShader(gl, gl.FRAGMENT_SHADER, fragmentShaderScript);
   if (!fragmentShader) {
     return null;
-  }
-
-  gl.shaderSource(fragmentShader, fragmentShaderScript);
-  gl.compileShader(fragmentShader);
-  if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS)) {
-    console.warn(
-      `Fragment shader failed to compile: ${gl.getShaderInfoLog(fragmentShader)}`
-    );
   }
 
   const program: WebGLProgram | null = gl.createProgram();
