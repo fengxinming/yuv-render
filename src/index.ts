@@ -7,7 +7,7 @@ import {
 } from './shared';
 import { getWebGLContext } from './util';
 
-class YUVRender {
+class YUVView {
   el: HTMLCanvasElement;
   width = 0;
   height = 0;
@@ -140,4 +140,4 @@ class YUVRender {
   }
 }
 
-export default YUVRender;
+export default YUVView;
