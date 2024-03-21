@@ -24,3 +24,7 @@ export function getWebGLContext(canvas: HTMLCanvasElement): WebGLRenderingContex
 
   return gl;
 }
+
+export function isWebglSupported(): boolean {
+  return !!getWebGLContext(document.createElement('canvas'));
+}

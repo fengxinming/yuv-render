@@ -1,6 +1,10 @@
 {
   "extends": [
     "fe",
-    "fe/ts"
-  ]
+    "fe/ts",
+    "fe/react"
+  ],
+  "globals": {
+    "__DEV__": true
+  }
 }

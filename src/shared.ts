@@ -45,7 +45,9 @@ function loadShader(gl: WebGLRenderingContext, type: number, source: string) {
 
   // 检查编译结果
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    console.warn(`Failed to compile ${type === gl.VERTEX_SHADER ? 'vertex': 'fragment'} shader: ${gl.getShaderInfoLog(shader)}`);
+    console.warn(
+      `Failed to compile ${type === gl.VERTEX_SHADER ? 'vertex' : 'fragment'} shader: ${gl.getShaderInfoLog(shader)}`
+    );
   }
 
   return shader;

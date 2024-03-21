@@ -1,7 +1,7 @@
-*.sh
-node_modules
-logs
+.DS_Store
+.idea
+.vscode
+
 dist
-coverage
-LICENSE
-README.md
+logs
+node_modules

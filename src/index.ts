@@ -5,12 +5,12 @@ import {
   createYTexture,
   initBuffers
 } from './shared';
-import { getWebGLContext } from './util';
+import { getWebGLContext, isWebglSupported } from './util';
 
-class YUVView {
+class YUVRender {
+  static isSupported = isWebglSupported;
+
   el: HTMLCanvasElement;
-  width = 0;
-  height = 0;
 
   private webglContext: WebGLRenderingContext | null;
   private yTexture: WebGLTexture | null = null;
@@ -39,12 +39,18 @@ class YUVView {
     this.vTexture = createVTexture(webglContext, shaderProgram);
   }
 
+  get height(): number {
+    return this.el.height;
+  }
+
+  get width(): number {
+    return this.el.width;
+  }
+
   setDimension(width: number, height: number): void {
     const { el } = this;
     el.width = width;
     el.height = height;
-    this.width = width;
-    this.height = height;
   }
 
   render(data: Uint8Array): void {
@@ -140,4 +146,4 @@ class YUVView {
   }
 }
 
-export default YUVView;
+export default YUVRender;
