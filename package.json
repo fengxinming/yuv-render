@@ -2,14 +2,21 @@
   "name": "yuv-render",
   "version": "1.0.0",
   "description": "Render YUV image data to HTML5 canvas.",
-  "main": "cjs.js",
-  "module": "esm.js",
-  "types": "src/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
   "scripts": {
-    "build": "rollup -c rollup.config.js",
-    "build:demo": "npm run build && cd examples/yuv && npm run build",
+    "build": "vite build",
+    "test": "vitest run --coverage",
+    "prepare": "husky",
     "eslint": "eslint --ext .js,.mjs,.jsx,.ts,.tsx --fix --ignore-path .eslintignore ./",
-    "prepare": "husky"
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "yuv",

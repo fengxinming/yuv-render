@@ -22,7 +22,7 @@ function YuvRender(props: any, ref: React.Ref<any>) {
     return {
       start() {
         setWaiting(true);
-        fetch(`${import.meta.env.BASE_URL}frame.json`)
+        fetch(`${(import.meta as any).env.BASE_URL}frame.json`)
           .then((res: Response) => res.json())
           .then((frameArray: ArrayBuffer) => {
             setWaiting(false);
