@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": [
@@ -20,17 +21,12 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "yuv-view": [
+      "yuv-render": [
         "../../src"
       ]
     }
   },
   "include": [
     "src"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
   ]
 }

@@ -1,6 +1,6 @@
 import './index.styl';
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import YUV from 'yuv-view';
+import YUV from 'yuv-render';
 
 function YuvRender(props: any, ref: React.Ref<any>) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -15,7 +15,7 @@ function YuvRender(props: any, ref: React.Ref<any>) {
 
     const yuv = new YUV(canvas);
     yuv.setDimension(768, 320);
-    yuvRef.current = yuv;
+    (yuvRef as any).current = yuv;
   }, []);
 
   useImperativeHandle(ref, () => {
@@ -33,7 +33,7 @@ function YuvRender(props: any, ref: React.Ref<any>) {
   });
 
   return (
-    <div className={`yuv-view${waiting ? ' v-waiting' : ''}`}>
+    <div className={`yuv-render${waiting ? ' v-waiting' : ''}`}>
       <canvas ref={canvasRef} />
       <div className="v-loading-spinner" />
     </div>
