@@ -24,7 +24,8 @@ import YUVRender from 'yuv-render';
 
 const yuv = new YUVRender(document.getElementById('canvas'));
 yuv.setDimension(width, height);
-yuv.render(buf);
+// Uint8Array data
+yuv.render(data);
 ```
 
 ## API
